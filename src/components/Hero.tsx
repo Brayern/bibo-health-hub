@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/hero-health.jpg";
-import { Heart, Users, TrendingUp } from "lucide-react";
+import { Users, Heart, TrendingUp } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -18,11 +17,6 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* UN SDG Badge */}
-          <Badge variant="secondary" className="mb-6 px-4 py-2">
-            <Heart className="w-4 h-4 mr-2" />
-            UN SDG 3: Good Health and Well-being
-          </Badge>
           
           {/* Main Headline */}
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
