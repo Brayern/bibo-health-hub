@@ -1,29 +1,91 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { User } from "@supabase/supabase-js";
+import { useToast } from "@/hooks/use-toast";
 
 const Header = () => {
+  const [user, setUser] = useState<User | null>(null);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to sign out.",
+      });
+    } else {
+      toast({
+        title: "Signed out",
+        description: "You have been successfully signed out.",
+      });
+    }
+  };
+
   return (
     <header className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-3">
+        <Link to="/" className="flex items-center space-x-3">
           <img src="/lovable-uploads/b3b956c9-9be1-495e-9970-ee5068ae0fd1.png" alt="Bibo Project" className="w-8 h-8" />
           <div>
             <h1 className="text-xl font-bold text-primary">The Bibo Project</h1>
             <p className="text-xs text-muted-foreground">Digital Health for All</p>
           </div>
-        </div>
+        </Link>
         
         <nav className="hidden md:flex items-center space-x-6">
           <a href="#features" className="text-foreground hover:text-primary transition-colors">Features</a>
           <a href="#impact" className="text-foreground hover:text-primary transition-colors">Impact</a>
           <a href="#community" className="text-foreground hover:text-primary transition-colors">Community</a>
-          <Button variant="accent" size="sm">
-            Join Platform
-          </Button>
+          
+          {user ? (
+            <div className="flex items-center space-x-4">
+              <span className="text-sm text-muted-foreground">
+                Welcome, {user.email}
+              </span>
+              <Button variant="outline" size="sm" onClick={handleSignOut}>
+                Sign Out
+              </Button>
+            </div>
+          ) : (
+            <Link to="/auth">
+              <Button variant="accent" size="sm">
+                Sign In
+              </Button>
+            </Link>
+          )}
         </nav>
         
-        <Button variant="outline" size="sm" className="md:hidden">
-          Menu
-        </Button>
+        <div className="md:hidden">
+          {user ? (
+            <Button variant="outline" size="sm" onClick={handleSignOut}>
+              Sign Out
+            </Button>
+          ) : (
+            <Link to="/auth">
+              <Button variant="outline" size="sm">
+                Sign In
+              </Button>
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   );
