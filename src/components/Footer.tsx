@@ -83,7 +83,7 @@ const Footer = () => {
           <p className="text-trust-foreground/60 text-sm flex items-center justify-center">
             Made with <Heart className="w-4 h-4 mx-1 text-accent" /> for global health
             <span className="mx-2">•</span>
-            © 2024 The Bibo Project
+            © 2025 The Bibo Project
           </p>
         </div>
       </div>
