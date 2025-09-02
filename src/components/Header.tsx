@@ -51,9 +51,10 @@ const Header = () => {
         </Link>
         
         <nav className="hidden md:flex items-center space-x-6">
-          <a href="#features" className="text-foreground hover:text-primary transition-colors">Features</a>
-          <a href="#impact" className="text-foreground hover:text-primary transition-colors">Impact</a>
-          <a href="#community" className="text-foreground hover:text-primary transition-colors">Community</a>
+          <Link to="/dashboard" className="text-foreground hover:text-primary transition-colors">Dashboard</Link>
+          <Link to="/health-info" className="text-foreground hover:text-primary transition-colors">Health Info</Link>
+          <Link to="/community" className="text-foreground hover:text-primary transition-colors">Community</Link>
+          <Link to="/reminders" className="text-foreground hover:text-primary transition-colors">Reminders</Link>
           
           {user ? (
             <div className="flex items-center space-x-4">
