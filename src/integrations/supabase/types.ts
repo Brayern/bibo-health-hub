@@ -208,6 +208,7 @@ export type Database = {
           email: string | null
           full_name: string | null
           gender: string | null
+          has_reminders_access: boolean
           height_cm: number | null
           id: string
           updated_at: string | null
@@ -222,6 +223,7 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           gender?: string | null
+          has_reminders_access?: boolean
           height_cm?: number | null
           id?: string
           updated_at?: string | null
@@ -236,6 +238,7 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           gender?: string | null
+          has_reminders_access?: boolean
           height_cm?: number | null
           id?: string
           updated_at?: string | null
