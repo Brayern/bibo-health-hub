@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-health.jpg";
 import { Users, Heart, TrendingUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+  
   return (
     <section className="relative py-20 overflow-hidden">
       {/* Background Image with Overlay */}
@@ -33,10 +36,19 @@ const Hero = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button variant="hero" size="lg" className="shadow-glow">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="shadow-glow"
+              onClick={() => navigate("/auth")}
+            >
               Explore Platform
             </Button>
-            <Button variant="outline" size="lg">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => navigate("/health-info")}
+            >
               Learn More
             </Button>
           </div>
