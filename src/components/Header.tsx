@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { useToast } from "@/hooks/use-toast";
+import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [user, setUser] = useState<User | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -75,17 +78,71 @@ const Header = () => {
         </nav>
         
         <div className="md:hidden">
-          {user ? (
-            <Button variant="outline" size="sm" onClick={handleSignOut}>
-              Sign Out
-            </Button>
-          ) : (
-            <Link to="/auth">
-              <Button variant="outline" size="sm">
-                Sign In
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
               </Button>
-            </Link>
-          )}
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[280px] sm:w-[400px]">
+              <div className="flex flex-col space-y-4 mt-6">
+                <Link 
+                  to="/dashboard" 
+                  className="text-foreground hover:text-primary transition-colors py-2 px-4 rounded-md hover:bg-accent"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Dashboard
+                </Link>
+                <Link 
+                  to="/health-info" 
+                  className="text-foreground hover:text-primary transition-colors py-2 px-4 rounded-md hover:bg-accent"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Health Info
+                </Link>
+                <Link 
+                  to="/community" 
+                  className="text-foreground hover:text-primary transition-colors py-2 px-4 rounded-md hover:bg-accent"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Community
+                </Link>
+                <Link 
+                  to="/reminders" 
+                  className="text-foreground hover:text-primary transition-colors py-2 px-4 rounded-md hover:bg-accent"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Reminders
+                </Link>
+                
+                <div className="border-t pt-4">
+                  {user ? (
+                    <div className="space-y-4">
+                      <div className="text-sm text-muted-foreground">
+                        Welcome, {user.email}
+                      </div>
+                      <Button 
+                        variant="outline" 
+                        className="w-full" 
+                        onClick={() => {
+                          handleSignOut();
+                          setIsOpen(false);
+                        }}
+                      >
+                        Sign Out
+                      </Button>
+                    </div>
+                  ) : (
+                    <Link to="/auth" onClick={() => setIsOpen(false)}>
+                      <Button variant="accent" className="w-full">
+                        Sign In
+                      </Button>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
