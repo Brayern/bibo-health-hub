@@ -48,7 +48,7 @@ const Header = () => {
         <Link to="/" className="flex items-center space-x-3">
           <img src="/lovable-uploads/b3b956c9-9be1-495e-9970-ee5068ae0fd1.png" alt="Bibo Project" className="w-8 h-8" />
           <div>
-            <h1 className="text-xl font-bold text-primary">The Bibo Project</h1>
+            <h1 className="text-xl font-bold text-primary">Bibo</h1>
             <p className="text-xs text-muted-foreground">Digital Health for All</p>
           </div>
         </Link>

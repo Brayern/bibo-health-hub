@@ -29,7 +29,7 @@ const Hero = () => {
           
           {/* Description */}
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            The Bibo Project leverages technology to provide accessible health information, 
+            Bibo for (Body in Body out) leverages technology to provide accessible health information, 
             wellness tracking, and community support, empowering individuals and communities 
             to live healthier lives.
           </p>

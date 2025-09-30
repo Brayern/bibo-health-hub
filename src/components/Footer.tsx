@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-4">
               <img src="/lovable-uploads/b3b956c9-9be1-495e-9970-ee5068ae0fd1.png" alt="Bibo Project" className="w-10 h-10" />
               <div>
-                <h3 className="text-xl font-bold">The Bibo Project</h3>
+                <h3 className="text-xl font-bold">Bibo</h3>
                 <p className="text-trust-foreground/70 text-sm">Digital Health for All</p>
               </div>
             </div>
