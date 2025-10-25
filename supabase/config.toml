@@ -64,3 +64,6 @@ inspector_port = 54331
 
 [functions.process-payment]
 verify_jwt = true
+
+[functions.assess-health-risk]
+verify_jwt = true

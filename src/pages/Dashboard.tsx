@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
+import { HealthRiskAssessment } from "@/components/HealthRiskAssessment";
+import { RiskTrends } from "@/components/RiskTrends";
 import { 
   Heart, 
   Activity, 
@@ -218,10 +220,11 @@ const Dashboard = () => {
         </div>
 
         <Tabs defaultValue="metrics" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="metrics">Metrics</TabsTrigger>
             <TabsTrigger value="goals">Goals</TabsTrigger>
             <TabsTrigger value="nutrition">Nutrition</TabsTrigger>
+            <TabsTrigger value="risk">Risk Assessment</TabsTrigger>
             <TabsTrigger value="overview">Overview</TabsTrigger>
           </TabsList>
 
@@ -438,6 +441,11 @@ const Dashboard = () => {
                 </p>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="risk" className="space-y-6">
+            <HealthRiskAssessment />
+            <RiskTrends />
           </TabsContent>
 
           <TabsContent value="overview" className="space-y-6">

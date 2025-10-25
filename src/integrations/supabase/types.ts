@@ -121,6 +121,60 @@ export type Database = {
         }
         Relationships: []
       }
+      health_risk_assessments: {
+        Row: {
+          age: number
+          alcohol_consumption: string
+          bmi: number
+          created_at: string
+          diastolic_bp: number
+          family_history: boolean
+          glucose_level: number
+          health_tips: string[] | null
+          id: string
+          physical_activity: string
+          risk_level: string
+          risk_score: number
+          smoking: boolean
+          systolic_bp: number
+          user_id: string
+        }
+        Insert: {
+          age: number
+          alcohol_consumption: string
+          bmi: number
+          created_at?: string
+          diastolic_bp: number
+          family_history?: boolean
+          glucose_level: number
+          health_tips?: string[] | null
+          id?: string
+          physical_activity: string
+          risk_level: string
+          risk_score: number
+          smoking?: boolean
+          systolic_bp: number
+          user_id: string
+        }
+        Update: {
+          age?: number
+          alcohol_consumption?: string
+          bmi?: number
+          created_at?: string
+          diastolic_bp?: number
+          family_history?: boolean
+          glucose_level?: number
+          health_tips?: string[] | null
+          id?: string
+          physical_activity?: string
+          risk_level?: string
+          risk_score?: number
+          smoking?: boolean
+          systolic_bp?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       nutrition_entries: {
         Row: {
           calories: number | null
