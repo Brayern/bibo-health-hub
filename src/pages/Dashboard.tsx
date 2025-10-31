@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { HealthRiskAssessment } from "@/components/HealthRiskAssessment";
 import { RiskTrends } from "@/components/RiskTrends";
+import Header from "@/components/Header";
 import { 
   Heart, 
   Activity, 
@@ -213,6 +214,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Header />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2">Health Dashboard</h1>

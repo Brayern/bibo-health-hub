@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { PaymentDialog } from "@/components/PaymentDialog";
+import Header from "@/components/Header";
 import { 
   Bell, 
   Plus, 
@@ -336,6 +337,7 @@ const Reminders = () => {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-background to-muted/20">
+        <Header />
         <div className="container mx-auto px-4 py-8">
           <div className="mb-8">
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent mb-2">
